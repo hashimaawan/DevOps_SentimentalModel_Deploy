@@ -9,7 +9,7 @@
 
 - Analyze text sentiment (positive, negative, or neutral)
 - Docker-ready deployment
-- CI/CD with GitHub Actions (To be added)
+- CI/CD with GitHub Actions ( Docker images will be built, The containers will be spun up, A basic health check will be run on the backend, Linting will be performed on the frontend)
 
 ## 🛠️ Tech Stack
 
