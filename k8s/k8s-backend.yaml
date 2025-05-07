@@ -30,6 +30,13 @@ spec:
           image: sentiment-backend:latest
           ports:
             - containerPort: 8000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
           env:
             - name: CORS_ORIGINS
               valueFrom:

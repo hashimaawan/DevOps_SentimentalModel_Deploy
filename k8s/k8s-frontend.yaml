@@ -8,7 +8,8 @@ spec:
   ports:
     - port: 3000
       targetPort: 3000
-  type: ClusterIP
+      nodePort: 30001
+  type: NodePort
 
 ---
 apiVersion: apps/v1
@@ -30,6 +31,13 @@ spec:
           image: sentiment-frontend:latest
           ports:
             - containerPort: 3000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
           env:
             - name: CHOKIDAR_USEPOLLING
               value: "true"
