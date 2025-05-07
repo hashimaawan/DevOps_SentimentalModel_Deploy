@@ -1,9 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30001
+  type: NodePort
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend-deployment
-  labels:
-    app: frontend
 spec:
   replicas: 1
   selector:
@@ -16,8 +28,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: i221239/sentiment-frontend
-          imagePullPolicy: Never
+          image: sentiment-frontend
           ports:
             - containerPort: 3000
           env:
@@ -28,23 +39,4 @@ spec:
                 secretKeyRef:
                   name: project-secrets
                   key: REACT_APP_API_URL
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "250m"
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend-service
-spec:
-  selector:
-    app: frontend
-  ports:
-    - protocol: TCP
-      port: 3000
-      targetPort: 3000
-  type: NodePort
+          

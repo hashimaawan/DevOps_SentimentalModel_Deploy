@@ -1,20 +1,9 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend-service
-spec:
-  selector:
-    app: backend
-  ports:
-    - port: 8000
-      targetPort: 8000
-  type: ClusterIP
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-deployment
+  labels:
+    app: backend
 spec:
   replicas: 1
   selector:
@@ -27,19 +16,33 @@ spec:
     spec:
       containers:
         - name: backend
-          image: sentiment-backend:latest
+          image: i221239/sentiment-backend
+          imagePullPolicy: Never
           ports:
             - containerPort: 8000
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "250m"
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
           env:
             - name: CORS_ORIGINS
               valueFrom:
                 secretKeyRef:
                   name: project-secrets
                   key: CORS_ORIGINS
+          resources:
+            limits:
+              cpu: 500m
+              memory: 256Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: ClusterIP
