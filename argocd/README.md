@@ -26,9 +26,12 @@ argocd/
 ├── credentials.txt           # details of log in info + cli commands
 ├── READMD.md #This file you are reading
 └── apps/
-  ├── secrets-app.yaml      # Deploys Kubernetes secrets
-  ├── backend-app.yaml      # Deploys the FastAPI backend
-  └── frontend-app.yaml     # Deploys the React frontend
+|  ├── secrets-app.yaml      # Deploys Kubernetes secrets
+|  ├── backend-app.yaml      # Deploys the FastAPI backend
+|  └── frontend-app.yaml     # Deploys the React frontend
+└── docs/
+  ├── argocd_ui.jpg
+  └── argocd_cli.jpg
 
 ````
 
