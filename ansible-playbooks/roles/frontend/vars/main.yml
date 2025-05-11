@@ -1,0 +1,5 @@
+---
+react_repo: "https://github.com/hashimaawan/DevOps_SentimentalModel_Deploy.git"
+react_branch: "main"
+app_dir: "/var/www/react-app"
+nginx_conf_path: "/etc/nginx/sites-available/react-app"

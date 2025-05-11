@@ -1,0 +1,17 @@
+server {
+    listen 80;
+    server_name {{ ansible_fqdn }};
+
+    root /var/www/html;
+    index index.html;
+
+    location / {
+        try_files $uri /index.html;
+    }
+
+    # Proxy API calls to backend
+    location /api/ {
+        proxy_pass http://{{ hostvars['backend.example.com'].ansible_host }}:8000/;
+        proxy_set_header Host $host;
+    }
+}

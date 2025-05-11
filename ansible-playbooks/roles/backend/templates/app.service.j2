@@ -1,0 +1,15 @@
+[Unit]
+Description=Sentiment Analysis API
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory={{ app_dir }}
+ExecStart={{ venv_path }}/bin/gunicorn \
+  --bind 0.0.0.0:8000 \
+  --workers 3 \
+  "app:app"
+  
+[Install]
+WantedBy=multi-user.target

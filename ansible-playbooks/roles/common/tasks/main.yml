@@ -1,0 +1,11 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install common utilities
+  apt:
+    name:
+      - git
+      - curl
+    state: present
