@@ -35,3 +35,4 @@
 ## Access app at:
 ### - Frontend: http://localhost:3001
 ### - API: http://localhost:8000
+### - AWS: https://djir21eb973fx.cloudfront.net/
