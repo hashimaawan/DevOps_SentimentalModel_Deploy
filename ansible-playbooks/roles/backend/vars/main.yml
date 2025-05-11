@@ -1,0 +1,6 @@
+---
+backend_repo: "https://github.com/hashimaawan/DevOps_SentimentalModel_Deploy.git"
+backend_branch: "main"
+app_dir: "/opt/sentiment-backend"
+venv_path: "{{ app_dir }}/venv"
+service_name: "sentiment-api"

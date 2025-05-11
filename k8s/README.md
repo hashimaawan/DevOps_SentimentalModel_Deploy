@@ -1,8 +1,4 @@
-Got it — you’re running on **Windows**, using **Docker Desktop**, and trying to deploy locally with **Minikube**, but you're facing **image pull errors** while the `docker-compose` setup works fine.
-
-Let’s **clean up the mess** and get you running on Minikube ASAP. Follow these steps exactly:
-
----
+## Kuberenetes implementation part
 
 ### ✅ Step 1: Clean Up Existing Minikube State
 
@@ -123,7 +119,7 @@ Use `minikube docker-env` to point Docker CLI to Minikube’s Docker daemon, the
 ---
 
 ### 1.3 Apply Kubernetes Manifests
-![Apply Kubernetes YAMLs](1.3_apply_kubernetes_manifests.jpg)
+![Apply Kubernetes YAMLs](docs/1.3_apply_kubernetes_manifests.jpg)
 
 Use `kubectl apply -f` to deploy your backend, frontend, and secrets.
 
@@ -170,7 +166,7 @@ Ensure your secrets were correctly created and mounted into pods.
 
 ## ✅ Final Result
 
-![It Finally Works](docs/)
+![It Finally Works](docs/cli_test_working.jpg)
 
 Your full-stack app is now live in Minikube! 🎉
 

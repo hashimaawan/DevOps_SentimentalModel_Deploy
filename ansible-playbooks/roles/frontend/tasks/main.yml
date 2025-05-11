@@ -1,0 +1,52 @@
+---
+- name: Ensure Node.js (16.x) is installed
+  shell: |
+    curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+    apt-get install -y nodejs
+  args:
+    creates: /usr/bin/node
+
+- name: Clone React repo
+  git:
+    repo: "{{ react_repo }}"
+    dest: "{{ app_dir }}"
+    version: "{{ react_branch }}"
+    force: yes
+
+- name: Install npm dependencies
+  npm:
+    path: "{{ app_dir }}"
+    production: no
+
+- name: Build React app
+  command: npm run build
+  args:
+    chdir: "{{ app_dir }}"
+
+- name: Copy built files to Nginx html dir
+  synchronize:
+    src: "{{ app_dir }}/build/"
+    dest: "/var/www/html/"
+    delete: yes
+
+- name: Template Nginx site for React
+  template:
+    src: nginx.conf.j2
+    dest: "{{ nginx_conf_path }}"
+
+- name: Enable Nginx site
+  file:
+    src: "{{ nginx_conf_path }}"
+    dest: /etc/nginx/sites-enabled/react-app
+    state: link
+    force: yes
+
+- name: Disable default Nginx site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Reload Nginx
+  service:
+    name: nginx
+    state: reloaded
