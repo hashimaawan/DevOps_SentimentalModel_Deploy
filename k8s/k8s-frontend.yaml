@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: i221239/sentiment-frontend
-          imagePullPolicy: Never
+          image: 22i1239/sentiment-frontend
+          #imagePullPolicy: Never
           ports:
             - containerPort: 3000
           env:
@@ -28,13 +28,13 @@ spec:
                 secretKeyRef:
                   name: project-secrets
                   key: REACT_APP_API_URL
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "250m"
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
+          #resources:
+            #requests:
+              #memory: "128Mi"
+              #cpu: "250m"
+            #limits:
+              #memory: "256Mi"
+              #cpu: "500m"
 ---
 apiVersion: v1
 kind: Service

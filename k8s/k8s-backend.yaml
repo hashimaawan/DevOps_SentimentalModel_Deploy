@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: i221239/sentiment-backend
-          imagePullPolicy: Never
+          image: 22i1239/sentiment-backend
+          #imagePullPolicy: Never
           ports:
             - containerPort: 8000
           env:
@@ -26,13 +26,13 @@ spec:
                 secretKeyRef:
                   name: project-secrets
                   key: CORS_ORIGINS
-          resources:
-            limits:
-              cpu: 500m
-              memory: 256Mi
-            requests:
-              cpu: 250m
-              memory: 128Mi
+          #resources:
+            #limits:
+              #cpu: 500m
+              #memory: 256Mi
+            #requests:
+              #cpu: 250m
+              #memory: 128Mi
 ---
 apiVersion: v1
 kind: Service
@@ -45,4 +45,6 @@ spec:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-  type: ClusterIP
+      #nodePort: 30080
+  #type: ClusterIP
+  type: NodePort
