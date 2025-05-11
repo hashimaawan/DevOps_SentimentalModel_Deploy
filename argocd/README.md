@@ -1,10 +1,4 @@
-Here's the final `README.md` code for your `argocd/` folder, including placeholders for two images: **one showing the ArgoCD Web UI** and another for the **ArgoCD CLI view**.
 
-You can place your screenshots in the `argocd/docs/` folder and update the filenames as needed.
-
----
-
-```markdown
 # 🚀 ArgoCD GitOps Deployment (Sentiment Analysis App)
 
 This folder contains the GitOps configuration for deploying the **Sentiment Analysis App** using **ArgoCD**, with a local Kubernetes setup on **WSL + Docker Desktop + Minikube**.
@@ -29,10 +23,12 @@ This folder contains the GitOps configuration for deploying the **Sentiment Anal
 
 argocd/
 ├── project.yaml              # Defines ArgoCD project 'sentiment-project'
+├── credentials.txt           # details of log in info + cli commands
+├── READMD.md #This file you are reading
 └── apps/
-├── secrets-app.yaml      # Deploys Kubernetes secrets
-├── backend-app.yaml      # Deploys the FastAPI backend
-└── frontend-app.yaml     # Deploys the React frontend
+  ├── secrets-app.yaml      # Deploys Kubernetes secrets
+  ├── backend-app.yaml      # Deploys the FastAPI backend
+  └── frontend-app.yaml     # Deploys the React frontend
 
 ````
 
@@ -83,7 +79,7 @@ Then open: [https://localhost:8080](https://localhost:8080)
 
 > The ArgoCD web dashboard showing deployed apps
 
-![ArgoCD UI](docs/argocd-ui.jpg)
+![ArgoCD UI](docs/argocd_ui.jpg)
 
 ---
 
@@ -91,7 +87,7 @@ Then open: [https://localhost:8080](https://localhost:8080)
 
 > ArgoCD CLI displaying synced applications and statuses
 
-![ArgoCD CLI](docs/argocd-cli.jpg)
+![ArgoCD CLI](docs/argocd_cli.jpg)
 
 ---
 
@@ -121,28 +117,13 @@ minikube service frontend-service
 
 ---
 
-## 🧠 Why ArgoCD?
-
-* Fully Git-driven: changes in Git are deployed automatically
-* Easy rollback and version history
-* Sync drift detection and self-healing
-* Visual management via web UI
-
----
-
 ## 🎯 Result
 
-You now have a complete local GitOps pipeline with:
+You we have a complete local GitOps pipeline with:
 
 * 🐳 Docker-based builds
 * ☸️ Kubernetes deployment via manifests
 * 🤖 GitOps sync using ArgoCD
 
-> Perfect for dev, CI/CD testing, and learning production-grade infrastructure!
 
-```
 
----
-
-Let me know if you want me to generate placeholder image files or turn this into a `docs/index.html` for better formatting later.
-```
