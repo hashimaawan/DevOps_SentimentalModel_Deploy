@@ -1,8 +1,4 @@
-Got it — you’re running on **Windows**, using **Docker Desktop**, and trying to deploy locally with **Minikube**, but you're facing **image pull errors** while the `docker-compose` setup works fine.
-
-Let’s **clean up the mess** and get you running on Minikube ASAP. Follow these steps exactly:
-
----
+## Kuberenetes implementation part
 
 ### ✅ Step 1: Clean Up Existing Minikube State
 
